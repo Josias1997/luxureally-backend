@@ -3,10 +3,18 @@ const router = express.Router();
 const multer = require('multer');
 
 
-const FILE_PATH = '/uploads/users';
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, "./public/images/");
+    },
+    filename: (req, file, cb) => {
+        console.log(file);
+        cb(null, `${file.originalname}`);
+    }
+});
 
 const upload = multer({
-    dest: `${FILE_PATH}/`
+    storage
 });
 
 
