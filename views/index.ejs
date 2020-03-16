@@ -87,7 +87,6 @@
                     <div class="card">
                       <div class="card-body">
                           <h4 class="card-title">Orders</h4>
-                          <p>23% increase in conversion</p>
                           <h4 class="text-dark font-weight-bold mb-2" id="number-orders"><%= orders.length %></h4>
                           <canvas id="customers"></canvas>
                       </div>
@@ -97,7 +96,6 @@
                     <div class="card">
                       <div class="card-body">
                           <h4 class="card-title">Deliveries</h4>
-                          <p>6% decrease in earnings</p>
                           <h4 class="text-dark font-weight-bold mb-2" id="number-deliveries"><%= deliveries.length %></h4>
                           <canvas id="orders"></canvas>
                       </div>
@@ -112,7 +110,7 @@
                 <div class="card-body">
                   <h4 class="card-title">Orders</h4>
                   <p class="card-description">
-                    Add class <code>.table-hover</code>
+                    Last Untreated Orders
                   </p>
                   <div class="table-responsive">
                     <table class="table table-hover">
@@ -120,8 +118,8 @@
                         <tr>
                           <th>Id</th>
                           <th>Total Price</th>
-                          <th>Status</th>
                           <th>Table</th>
+                          <th>Status</th>
                           <th>Actions</th>
                         </tr>
                       </thead>
@@ -165,7 +163,7 @@
                 <div class="card-body">
                   <h4 class="card-title">Deliveries</h4>
                   <p class="card-description">
-                    Add class <code>.table-hover</code>
+                    Last Untreated Deliveries
                   </p>
                   <div class="table-responsive">
                     <table class="table table-hover">
@@ -246,6 +244,7 @@
   </div>
   <!-- container-scroller -->
   <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+  <script type="text/javascript" src="/js/request-notification-permission.js"></script>
   <script type="text/javascript" src="/js/orders.js"></script>
   <script type="text/javascript" src="/js/deliveries.js"></script>
   <script type="text/javascript" src="/js/delete.js"></script>
