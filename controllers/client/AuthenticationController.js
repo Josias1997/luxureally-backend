@@ -12,8 +12,6 @@ const login = (req, res) => {
             if (user) {
                 bcrypt.compare(req.body.password, user.password, (err, result) => {
                     if (result) {
-                        user.token = cryptoJS.SHA512(user.username + user.password);
-                        user.save();
                         res.json(user);
                     }
                     else {
@@ -37,9 +35,8 @@ const register = (req, res) => {
     }
 
     User.findOne({username: user.username})
-        .then((user) => {
-            console.log(user);
-            if(user) {
+        .then((result) => {
+            if(result) {
                 res.status(404).json({
                     error: 'User already exists!'
                 });
@@ -75,7 +72,9 @@ const register = (req, res) => {
             })
             }
         }).catch(err => {   
-            console.log(error);
+            res.status(404).json({
+                error: err.message
+            })
         })
 };
 

@@ -25,10 +25,6 @@ const UserSchema = Schema({
         type: Schema.Types.ObjectId,
         ref: 'Restaurant'
     },
-    token: {
-        type: String,
-        default: null
-    },
     picture: {
         type: String,
         default: null,
