@@ -46,7 +46,7 @@ socket.on('new_delivery', delivery => {
 
         let notification = new Notification('New delivery', options);
     }
-    else if (Notification.permission !== "denied") {
+    else if (Notification.permission === "denied") {
         Notification.requestPermission(permission => {
             if (!('permission' in Notification)) {
                 Notification.permission = permission;
@@ -109,7 +109,7 @@ socket.on('new_order', order => {
 
         let notification = new Notification('New Order', options);
     }
-    else if (Notification.permission !== "denied") {
+    else if (Notification.permission === "denied") {
         Notification.requestPermission(permission => {
             if (!('permission' in Notification)) {
                 Notification.permission = permission;

@@ -75,8 +75,6 @@ const server = http.createServer(app);
 const io = socketio(server);
 
 
-console.log("MONGO", config.mongoURI);
-
 // Connect to database
 mongoose.connect(config.mongoURI, {
     useNewUrlParser: true,
@@ -101,6 +99,9 @@ app.use('/api/foods', foods);
 app.use('/api/orders', orders);
 app.use('/api/orderItems', orderItems);
 app.use('/admin', admin);
+app.get('*',(req, res) => {
+    res.redirect('/admin/');
+})
 
 
 // Initialise sockets
