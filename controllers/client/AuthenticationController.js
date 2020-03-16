@@ -38,11 +38,13 @@ const register = (req, res) => {
 
     User.findOne({username: user.username})
         .then((user) => {
-            res.status(404).json({
-                error: 'User already exists!'
-            });
-        }).catch(err => {   
-            bcrypt.genSalt(10, (err, salt) => {
+            console.log(user);
+            if(user) {
+                res.status(404).json({
+                    error: 'User already exists!'
+                });
+            } else {
+                bcrypt.genSalt(10, (err, salt) => {
                 if (err) {
                     res.status(404).json({
                         error: err.message
@@ -71,6 +73,9 @@ const register = (req, res) => {
                     })
                 })
             })
+            }
+        }).catch(err => {   
+            console.log(error);
         })
 };
 
