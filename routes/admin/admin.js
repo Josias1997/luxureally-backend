@@ -26,7 +26,7 @@ const deliveryController = require('./../../controllers/admin/DeliveryController
 const foodController = require('./../../controllers/admin/FoodController');
 const additionController = require('./../../controllers/admin/AdditionController');
 const orderController = require('./../../controllers/admin/OrderController');
-const authenticationController = require('./../../controllers/admin/authenticationController');
+const authenticationController = require('./../../controllers/admin/AuthenticationController');
 
 // Models
 const Restaurant = require('./../../models/Restaurant');
