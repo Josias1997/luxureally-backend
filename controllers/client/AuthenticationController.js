@@ -41,43 +41,37 @@ const register = (req, res) => {
             res.status(404).json({
                 error: 'User already exists!'
             });
-            return;
-        }).catch(err => {
-            res.status(404).json({
-                error: 'Error'
-            })
-            return;
-        })
-
-    bcrypt.genSalt(10, (err, salt) => {
-        if (err) {
-            res.status(404).json({
-                error: err.message
-            })
-        }
-        bcrypt.hash(user.password, salt, (err, hash) => {
-            if (err) {
-                res.status(404).json({
-                    error: err.message
-                })
-            }
-            user.password = hash;
-            user.save((err, user) => {
+        }).catch(err => {   
+            bcrypt.genSalt(10, (err, salt) => {
                 if (err) {
-                    console.log(err);
+                    res.status(404).json({
+                        error: err.message
+                    })
                 }
-                if (user) {
-                    Restaurant.findById(user.restaurant).then(restaurant => {
-                        restaurant.users.push(user._id)
-                        restaurant.save().then(restaurant => {
-                            console.log(restaurant.users);
+                bcrypt.hash(user.password, salt, (err, hash) => {
+                    if (err) {
+                        res.status(404).json({
+                            error: err.message
                         })
-                    });
-                    res.status(200).json(user);
-                }
+                    }
+                    user.password = hash;
+                    user.save((err, user) => {
+                        if (err) {
+                            console.log(err);
+                        }
+                        if (user) {
+                            Restaurant.findById(user.restaurant).then(restaurant => {
+                                restaurant.users.push(user._id)
+                                restaurant.save().then(restaurant => {
+                                    console.log(restaurant.users);
+                                })
+                            });
+                            res.status(200).json(user);
+                        }
+                    })
+                })
             })
         })
-    })
 };
 
 module.exports = {

@@ -60,7 +60,6 @@ app.use((req, res, next) => {
 // Serve static files
 app.use(express.static('uploads'));
 app.use(express.static('public'));
-app.use(express.static(path.join(__dirname, 'client', 'build')));
 
 // Set view engine
 app.set('view engine', 'ejs');
@@ -102,10 +101,6 @@ app.use('/api/foods', foods);
 app.use('/api/orders', orders);
 app.use('/api/orderItems', orderItems);
 app.use('/admin', admin);
-
-app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
-});
 
 
 // Initialise sockets
