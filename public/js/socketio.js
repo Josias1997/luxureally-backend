@@ -1,5 +1,6 @@
 let socket = io.connect('https://luxureally-backend.herokuapp.com');
 
+
 socket.on('new_delivery', delivery => {
     const body = document.querySelector('#body-delivery');
     if(body) {
@@ -26,6 +27,10 @@ socket.on('new_delivery', delivery => {
             </button>
           </td>
         </tr>`))
+        const deliveriesNumber = document.querySelector('#number-deliveries');
+        if (deliveriesNumber) {
+          deliveriesNumber.innerText = parseInt(deliveriesNumber.innerText) + 1;
+        }
     }
     if (!("Notification" in window)) {
         alert("This browser does not support desktop notification");
@@ -85,6 +90,10 @@ socket.on('new_order', order => {
           </button>
         </td>
       </tr>`))
+      const ordersNumber = document.querySelector('#number-orders');
+        if (ordersNumber) {
+          ordersNumber.innerText = parseInt(ordersNumber.innerText) + 1;
+        }
     }
     if (!("Notification" in window)) {
         alert("This browser does not support desktop notification");
