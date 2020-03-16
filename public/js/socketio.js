@@ -1,4 +1,4 @@
-let socket = io.connect('http://localhost:8000');
+let socket = io.connect('https://luxureally-backend.herokuapp.com');
 
 socket.on('new_delivery', delivery => {
     const body = document.querySelector('#body-delivery');

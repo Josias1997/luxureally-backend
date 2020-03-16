@@ -1,7 +1,11 @@
 <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <div class="user-profile">
           <div class="user-image">
-            <img src="<%= user.picture %>">
+            <img src="<% if (user.picture) { %> 
+              <%= user.picture %>
+            <% } else { %> 
+              <%= `/images/faces/face1.jpg` %>
+            <% } %>  %>">
           </div>
           <div class="user-name">
               <%= user.username %>
